@@ -23,8 +23,8 @@ class BotonCirc extends Boton {
       ellipse(posicion.x, posicion.y, 35, 35);
       stroke(255, 255, 255);
       fill(255, 255, 255);
-      rect(posicion.x-5, posicion.y-2, 10, 10, 1);
-      triangle(posicion.x+7, posicion.y-2, posicion.x-7, posicion.y-2, posicion.x, posicion.y-8);
+      rect(posicion.x-5, posicion.y-3, 10, 10, 1);
+      triangle(posicion.x+7, posicion.y-3, posicion.x-7, posicion.y-3, posicion.x, posicion.y-9);
     } else {
       strokeWeight(2);
       stroke(0, 0, 0);
