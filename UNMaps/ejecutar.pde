@@ -1,3 +1,4 @@
+
 void ejecutar(int a) {
   color cl=color(135, 255, 119); 
   PVector pos= new PVector(width/2, height/2-50);  
@@ -16,17 +17,13 @@ void ejecutar(int a) {
   PVector posg= new PVector(width/2, (height+img.height)/2+50);  
   PVector dimeng= new PVector(210, 40);  
 
-  PVector preturned1= new PVector(width*1/2, (height-img.height)/2-50);   
+  PVector preturned1= new PVector(width*1/2, (height-img.height)/2-30);   
 
 
   Boton nivelo=new BotonRect(cl, pos, 1, 15, 28, dimen, "Empezar ruta", 0);
-
   Boton instruc=new BotonRect(cli, posi, 2, 15, 28, dimeni, "Instrucciones", 0);
-
   Boton generate=new BotonRect(clg, posg, 0, 15, 28, dimeng, "Generar ruta", 0);
-
   Boton returned=new BotonCirc(color(41, 74, 255), preturned1, 0, true);
-
   switch(a) {
 
   case 0:
@@ -55,7 +52,9 @@ void ejecutar(int a) {
     generate.asignarValor();
     mapa.display();    
     returned.display();
-    returned.asignarValor();
+    returned.asignarValor();  
+    textSize(10);
+    text("Coordena x "+ (width/2 - mouseX)+" Coordenada Y"+(height/2-mouseY), 100, 600);  
     break;
 
   case 2:
