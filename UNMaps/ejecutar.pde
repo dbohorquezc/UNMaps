@@ -24,7 +24,7 @@ void ejecutar(int a) {
 
   Boton instruc=new BotonRect(cli, posi, 2, 15, 28, dimeni, "Instrucciones", 0);
 
-  Boton generate=new BotonRect(clg, posg, 0, 15, 28, dimeng, "Generar ruta", 0);
+  Boton generate=new BotonRect(clg, posg, 6, 15, 28, dimeng, "Generar ruta", 0);
 
   Boton returned=new BotonCirc(color(41, 74, 255), preturned1, 0, true);
   

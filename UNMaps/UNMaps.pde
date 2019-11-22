@@ -15,12 +15,15 @@ void setup() {
   nfinal=false;
 }
 
-void draw() {
-  
-  ejecutar(nivel);
-  
+void draw() {  
+  ejecutar(nivel);  
 }
 void mousePressed () { 
+  if (nivel==1) {
+    mapa.mouse1();
+  }
+}
+void mouseClicked () { 
   if (nivel==1) {
     mapa.mouse1();
   }

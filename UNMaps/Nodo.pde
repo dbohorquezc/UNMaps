@@ -7,7 +7,7 @@ class Nodo {
   color cnodo1,cnodo2;
   DynamicArrayInteger conexiones;
 
-  Nodo(PVector p, int s, int z,color c,color d/*,String a,String b*/) {
+  Nodo(PVector p, int s, int z,color c,color d,String a,String b) {
     setPosicion(p);
     setTamano(s);
     setNumnodo(z);

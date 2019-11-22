@@ -59,7 +59,7 @@ class BotonRect extends Boton {
     popStyle();
   }
 
- void asignarValor() {
+  void asignarValor() {
     if (mousePressed && mouseX<=posicion.x+(dimensiones.x/2) && mouseX>=posicion.x-(dimensiones.x/2) && mouseY<=posicion.y+(dimensiones.y/2) && mouseY>=posicion.y-(dimensiones.y/2)) {
       if (valor<3) {
         nivel=valor;
@@ -72,6 +72,16 @@ class BotonRect extends Boton {
       case 4:
         nfinal=true;
         ninicial=false;
+        break;
+      case 6:
+        for (int j=0; j<2; j++) {
+          if (mapa.selecciones[0].getNumnodo()!=0) mapa.nodo1=mapa.selecciones[0].getNumnodo();
+          if (mapa.selecciones[1].getNumnodo()!=0) {
+            mapa.nodo2=mapa.selecciones[1].getNumnodo();
+            mapa.createPathStart(mapa.nodo1);
+            mapa.drawShorterPath(mapa.nodo2, mapa.nodo1);
+          }
+        }
         break;
       }
     }
