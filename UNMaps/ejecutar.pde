@@ -16,14 +16,21 @@ void ejecutar(int a) {
   color clg=color(255, 126, 126); 
   PVector posg= new PVector(width/2, (height+img.height)/2+50);  
   PVector dimeng= new PVector(210, 40);  
-
   PVector preturned1= new PVector(width*1/2, (height-img.height)/2-30);   
-
+  PVector pos1 = new PVector(width*1/8, height*2/16+100);
+  PVector pos2 = new PVector(width*7/8, height*2/16+100); 
 
   Boton nivelo=new BotonRect(cl, pos, 1, 15, 28, dimen, "Empezar ruta", 0);
+
   Boton instruc=new BotonRect(cli, posi, 2, 15, 28, dimeni, "Instrucciones", 0);
+
   Boton generate=new BotonRect(clg, posg, 0, 15, 28, dimeng, "Generar ruta", 0);
+
   Boton returned=new BotonCirc(color(41, 74, 255), preturned1, 0, true);
+  
+  Boton partida =new BotonRect(color(41, 74, 255), pos1, 3, 15, 28, dimeng, "Asignar", 0);
+  
+  Boton llegada =new BotonRect(color(41, 74, 255), pos2, 4, 15, 28, dimeng, "Asignar", 0);
   switch(a) {
 
   case 0:
@@ -35,7 +42,6 @@ void ejecutar(int a) {
     nivelo.display();  
     instruc.display();
     nivelo.asignarValor();  
-
     instruc.asignarValor();
     break;  
   case 1:    
@@ -53,8 +59,15 @@ void ejecutar(int a) {
     mapa.display();    
     returned.display();
     returned.asignarValor();  
+    llegada.display();
+    llegada.asignarValor();
+    partida.display();
+    partida.asignarValor();
     textSize(10);
     text("Coordena x "+ (width/2 - mouseX)+" Coordenada Y"+(height/2-mouseY), 100, 600);  
+    if ((mapa.selecciones[0].z)!=-1) {
+      text(mapa.selecciones[0].z, 100, 660);
+    }
     break;
 
   case 2:

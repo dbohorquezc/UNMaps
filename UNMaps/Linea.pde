@@ -6,8 +6,6 @@ class Linea{
   setPuntofinal(b);
   }
   
-
-  
   void setPuntoinicial(PVector a){
     puntoinicial=a;
   }
@@ -21,7 +19,6 @@ class Linea{
   PVector puntofinal(){
   return puntofinal;
   } 
-
     void display() {
     pushStyle();
     strokeWeight(4);
@@ -35,5 +32,4 @@ class Linea{
     line(puntoinicial.x, puntoinicial.y, puntofinal.x, puntofinal.y);    
     popStyle();
   }
-
 }

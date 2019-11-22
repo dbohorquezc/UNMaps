@@ -5,14 +5,43 @@ class Nodo {
   boolean q;
   String a, b;
   color cnodo1,cnodo2;
-  Nodo(PVector p, int s, int z,color c,color d,String a,String b) {
+  DynamicArrayInteger conexiones;
+
+  Nodo(PVector p, int s, int z,color c,color d/*,String a,String b*/) {
     setPosicion(p);
     setTamano(s);
     setNumnodo(z);
     setColnodo1(c);
     setColnodo2(d);
+    conexiones = new DynamicArrayInteger();
     setNombre(a);
     setNumero(b);
+  }
+  
+  void connectNewNode (int node){
+    if (!isAlreadyConnected(node)){
+      conexiones.PushBack(node);
+    }
+  }
+  
+  boolean isAlreadyConnected (int node){
+    for (int i = 0; i < conexiones.size; i++){
+      if (conexiones.Get(i) == node){
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  int getConexion (int i){
+    return conexiones.Get(i);
+  }
+  int getNumnodo(){
+     return z;
+  }
+  
+  int cantidadConexiones (){
+    return conexiones.Size();
   }
 
   void setPosicion(PVector pos) {
@@ -72,6 +101,8 @@ class Nodo {
       fill(cnodo2);
     }
     ellipse(posicion.x, posicion.y, 2*tamano, 2*tamano);  
+    textSize(10);
+    text(z, posicion.x-10, posicion.y);
     popStyle();
   }
 

@@ -59,9 +59,21 @@ class BotonRect extends Boton {
     popStyle();
   }
 
-  void asignarValor() {
+ void asignarValor() {
     if (mousePressed && mouseX<=posicion.x+(dimensiones.x/2) && mouseX>=posicion.x-(dimensiones.x/2) && mouseY<=posicion.y+(dimensiones.y/2) && mouseY>=posicion.y-(dimensiones.y/2)) {
-      nivel=valor;
+      if (valor<3) {
+        nivel=valor;
+      }
+      switch(valor) {
+      case 3:
+        ninicial=true;
+        nfinal=false;
+        break;
+      case 4:
+        nfinal=true;
+        ninicial=false;
+        break;
+      }
     }
   }
 }
