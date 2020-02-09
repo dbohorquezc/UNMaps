@@ -1,16 +1,16 @@
 class Grafo {
-  Table tabladeposiciones, tablaconexiones;
-  int tnodo, tgrafo;
+  Table tabladeposiciones, tablaconexiones, tablavehiculos;
+  int tnodo, tgrafo, tvehiculos;
   Nodo[] nodo;
+  Nodo[] nodoveh;
   Nodo[] opcion;
   Nodo[] selecciones;
   Linea[] linea;
   int nodo1;
   int nodo2;
-
+  int control=1;
   //Para usar un arbol que guarde los caminos, se usara un arreglo con los papas de cada nodo
   int[] padres;
-
   int[] condiciones;
   //Para usar el algoritmo de Dijkstra se usaran el arreglo de padres y un arreglo con la condicion de cada nodo en un int llamado condiciones:
 
@@ -33,12 +33,15 @@ class Grafo {
   color colnodo2a=(color(255, 0, 0));
   color colnodo2b=(color(255, 0, 255));
 
-  Grafo(Table a, Table b) {
+  Grafo(Table a, Table b, Table c) {
     setTablaposiciones(a);
+    setTablavehiculos(c);
     setTamanotablas(a);
+    setTamanotablas2(c);
     setTamanografo(b);    
     setTablaconexiones(b);
     nodo = new Nodo[tnodo];
+    nodoveh = new Nodo[tvehiculos];
     padres = new int[tnodo];
     condiciones = new int[tnodo];
     selecciones = new Nodo[2];
@@ -53,11 +56,19 @@ class Grafo {
     for (int i = 0; i < tnodo; i++) {
       TableRow row=tabladeposiciones.getRow(i);
       if (i<77) {
-        nodo[i]=new Nodo(new PVector(width/2-row.getInt(0), height/2-row.getInt(1)), 5, i+1, colnodo1a, colnodo1b,row.getString(2),row.getString(3));
+        nodo[i]=new Nodo(new PVector(width/2-row.getInt(0), height/2-row.getInt(1)), 5, i+1, colnodo1a, colnodo1b, row.getString(2), row.getString(3));
       } else {
-        nodo[i]=new Nodo(new PVector(width/2-row.getInt(0), height/2-row.getInt(1)), 3, i+1, colnodo2a, colnodo2b,row.getString(2),row.getString(3));
+        nodo[i]=new Nodo(new PVector(width/2-row.getInt(0), height/2-row.getInt(1)), 3, i+1, colnodo2a, colnodo2b, row.getString(2), row.getString(3));
       }
-    }   
+    }
+    for (int i = 0; i < tvehiculos; i++) {
+      TableRow row=tablavehiculos.getRow(i);
+      if (i<27) {
+        nodoveh[i]=new Nodo(new PVector(width/2-row.getInt(0), height/2-row.getInt(1)), 5, i+1, colnodo1a, colnodo1b, row.getString(2), row.getString(3));
+      } else {
+        nodoveh[i]=new Nodo(new PVector(width/2-row.getInt(0), height/2-row.getInt(1)), 3, i+1, colnodo2a, colnodo2b, row.getString(2), row.getString(3));
+      }
+    }
     for (int i=0; i<2; i++) {
       selecciones[i]=new Nodo(new PVector(0, 0), 5, 0, colnodo1a, colnodo1b, "seleccion", "NA");
     }
@@ -114,12 +125,22 @@ class Grafo {
     tnodo=aa.getRowCount();
   }
 
+
+  void setTamanotablas2(Table aa) {
+    tvehiculos=aa.getRowCount();
+  }
+
+
   void setTablaconexiones(Table a) {
     tablaconexiones=a;
   }
 
   void setTablaposiciones(Table ee) {
     tabladeposiciones=ee;
+  }
+
+  void setTablavehiculos(Table ee) {
+    tablavehiculos=ee;
   }
   void mouse1 () {
     for (int i=0; i<tnodo; i++) {
@@ -238,9 +259,16 @@ class Grafo {
         }
       }
     }
-    for (int i = 0; i < nodo.length; i++) {
-      nodo[i].display();
+    if (control==1) {
+      for (int i = 0; i < nodoveh.length; i++) {
+        nodoveh[i].display();
+      }
+    } else {
+      for (int i = 0; i < nodo.length; i++) {
+        nodo[i].display();
+      }
     }
+
     for (int i = 0; i < selecciones.length; i++) {
       if (selecciones[i].z!=-1) {
         selecciones[i].display();
