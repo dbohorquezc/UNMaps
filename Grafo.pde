@@ -1,6 +1,6 @@
 class Grafo {
-  Table tabladeposiciones, tablaconexiones, tablavehiculos,tablaconexionesveh;
-  int tnodo, tgrafo,tgrafo2, tvehiculos;
+  Table tabladeposiciones, tablaconexiones, tablavehiculos, tablaconexionesveh;
+  int tnodo, tgrafo, tgrafo2, tvehiculos;
   Nodo[] nodo;
   Nodo[] nodoveh;
   Nodo[] opcion;
@@ -34,7 +34,7 @@ class Grafo {
   color colnodo2a=(color(255, 0, 0));
   color colnodo2b=(color(255, 0, 255));
 
-  Grafo(Table a, Table b, Table c,Table d) {
+  Grafo(Table a, Table b, Table c, Table d) {
     setTablaposiciones(a);
     setTablavehiculos(c);
     setTamanotablas(a);
@@ -95,19 +95,19 @@ class Grafo {
         }
       }
     }    
-    linea2= new Linea[tgrafo2];    
-    int tlinea2=0;
-    for (int i = 0; i < tablaconexionesveh.getRowCount(); i++) {
-      TableRow row=tablaconexionesveh.getRow(i);
-      for (int j = i; j < tablaconexionesveh.getColumnCount(); j++) {
-        if (row.getInt(j) == 1) {
-          linea[tlinea2]=new Linea(nodoveh[i].posicion, nodoveh[j].posicion);
-          nodoveh[i].connectNewNode(nodoveh[j].z);
-          nodoveh[j].connectNewNode(nodoveh[i].z);
-          tlinea2++;
-        }
-      }
-    }
+    //linea2= new Linea[tgrafo2];    
+    //int tlinea2=0;
+    //for (int i = 0; i < tablaconexionesveh.getRowCount(); i++) {
+    //  TableRow row=tablaconexionesveh.getRow(i);
+    //  for (int j = i; j < tablaconexionesveh.getColumnCount(); j++) {
+    //    if (row.getInt(j) == 1) {
+    //      linea[tlinea2]=new Linea(nodoveh[i].posicion, nodoveh[j].posicion);
+    //      nodoveh[i].connectNewNode(nodoveh[j].z);
+    //      nodoveh[j].connectNewNode(nodoveh[i].z);
+    //      tlinea2++;
+    //    }
+    //  }
+    //}
 
     //
 
@@ -135,7 +135,7 @@ class Grafo {
       }
     }
   }
-    void setTamanografo2(Table aa) {
+  void setTamanografo2(Table aa) {
     for (int i = 0; i < aa.getRowCount(); i++) {
       for (int j = i; j < aa.getColumnCount(); j++) {
         if (aa.getInt(i, j) > 0) {
@@ -166,7 +166,9 @@ class Grafo {
   void setTablaposiciones(Table ee) {
     tabladeposiciones=ee;
   }
-
+  void setControl(int aa) {
+    control=aa;
+  }
   void setTablavehiculos(Table ee) {
     tablavehiculos=ee;
   }
@@ -281,13 +283,13 @@ class Grafo {
     strokeWeight(10);
     fill(0);
     if (control==1) {
-      if (linea2.length>0) {
-        for (int i = 0; i<linea2.length; i++) {
-          if (linea2[i]!=null) {
-            linea2[i].display();
-          }
-        }
-      }
+      //if (linea2.length>0) {
+      //  for (int i = 0; i<linea2.length; i++) {
+      //    if (linea2[i]!=null) {
+      //      linea2[i].display();
+      //    }
+      //  }
+      //}
     } else {
       if (linea.length>0) {
         for (int i = 0; i<linea.length; i++) {

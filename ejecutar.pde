@@ -1,4 +1,4 @@
-
+  
 void ejecutar(int a) {
   color cl=color(135, 255, 119); 
   PVector pos= new PVector(width/2, height/2-50);  
@@ -16,7 +16,9 @@ void ejecutar(int a) {
   color clg=color(255, 126, 126); 
   PVector posg= new PVector(width/2, (height+img.height)/2+50);  
   PVector dimeng= new PVector(210, 40);  
-  PVector preturned1= new PVector(width*1/2, (height-img.height)/2-30);   
+  PVector preturned1= new PVector(width*1/2-80, (height-img.height)/2-30);
+  PVector pauto= new PVector(width*1/2-20, (height-img.height)/2-30);
+  PVector pcamina= new PVector(width*1/2+20, (height-img.height)/2-30);   
   PVector pos1 = new PVector(width*1/8, height*2/16+100);
   PVector pos2 = new PVector(width*7/8, height*2/16+100); 
 
@@ -26,7 +28,9 @@ void ejecutar(int a) {
 
   Boton generate=new BotonRect(clg, posg, 6, 15, 28, dimeng, "Generar ruta", 0);
 
-  Boton returned=new BotonCirc(color(41, 74, 255), preturned1, 0, true);
+  Boton returned=new BotonCirc(color(41, 74, 255), preturned1, 0, 1);
+  Boton camina=new BotonCirc(color(41, 74, 255), pauto, 2, 2);
+  Boton auto=new BotonCirc(color(41, 74, 255), pcamina, 3, 3);
   
   Boton partida =new BotonRect(color(41, 74, 255), pos1, 3, 15, 28, dimeng, "Asignar", 0);
   
@@ -58,7 +62,11 @@ void ejecutar(int a) {
     generate.asignarValor();
     mapa.display();    
     returned.display();
-    returned.asignarValor();  
+    returned.asignarValor();
+    camina.display();
+    camina.asignarValor();
+    auto.display();
+    auto.asignarValor();  
     llegada.display();
     llegada.asignarValor();
     partida.display();
