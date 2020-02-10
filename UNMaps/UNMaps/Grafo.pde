@@ -1,13 +1,11 @@
 class Grafo {
-  Table tabladeposiciones, tablaconexiones, tablavehiculos, tablaconexionesveh;
-  int tnodo, tgrafo, tgrafo2, tvehiculos;
-  double dist;
+  Table tabladeposiciones, tablaconexiones, tablavehiculos;
+  int tnodo, tgrafo, tvehiculos;
   Nodo[] nodo;
   Nodo[] nodoveh;
   Nodo[] opcion;
   Nodo[] selecciones;
   Linea[] linea;
-  Linea[] linea2;
   int nodo1;
   int nodo2;
   int control=1;
@@ -28,7 +26,6 @@ class Grafo {
 
   //Para dibujar el camino se usara un arreglo de lineas
   Linea[] camino;
-  Linea[] caminoE;
 
 
   color colnodo1a=(color(0, 255, 0));
@@ -36,15 +33,13 @@ class Grafo {
   color colnodo2a=(color(255, 0, 0));
   color colnodo2b=(color(255, 0, 255));
 
-  Grafo(Table a, Table b, Table c, Table d) {
+  Grafo(Table a, Table b, Table c) {
     setTablaposiciones(a);
     setTablavehiculos(c);
     setTamanotablas(a);
     setTamanotablas2(c);
     setTamanografo(b);    
     setTablaconexiones(b);
-    setTamanografo2(d);    
-    setTablaconexiones2(d);
     nodo = new Nodo[tnodo];
     nodoveh = new Nodo[tvehiculos];
     padres = new int[tnodo];
@@ -96,20 +91,7 @@ class Grafo {
           tlinea++;
         }
       }
-    }    
-    //linea2= new Linea[tgrafo2];    
-    //int tlinea2=0;
-    //for (int i = 0; i < tablaconexionesveh.getRowCount(); i++) {
-    //  TableRow row=tablaconexionesveh.getRow(i);
-    //  for (int j = i; j < tablaconexionesveh.getColumnCount(); j++) {
-    //    if (row.getInt(j) == 1) {
-    //      linea[tlinea2]=new Linea(nodoveh[i].posicion, nodoveh[j].posicion);
-    //      nodoveh[i].connectNewNode(nodoveh[j].z);
-    //      nodoveh[j].connectNewNode(nodoveh[i].z);
-    //      tlinea2++;
-    //    }
-    //  }
-    //}
+    }
 
     //
 
@@ -137,15 +119,6 @@ class Grafo {
       }
     }
   }
-  void setTamanografo2(Table aa) {
-    for (int i = 0; i < aa.getRowCount(); i++) {
-      for (int j = i; j < aa.getColumnCount(); j++) {
-        if (aa.getInt(i, j) > 0) {
-          tgrafo2=tgrafo2+aa.getInt(i, j);
-        }
-      }
-    }
-  }
 
 
   void setTamanotablas(Table aa) {
@@ -161,16 +134,11 @@ class Grafo {
   void setTablaconexiones(Table a) {
     tablaconexiones=a;
   }
-  void setTablaconexiones2(Table a) {
-    tablaconexionesveh=a;
-  }
 
   void setTablaposiciones(Table ee) {
     tabladeposiciones=ee;
   }
-  void setControl(int aa) {
-    control=aa;
-  }
+
   void setTablavehiculos(Table ee) {
     tablavehiculos=ee;
   }
@@ -260,59 +228,7 @@ class Grafo {
       }
     }
   }
-  
-  void createPathStartE (int n){
-    caminoE = new Linea[200];
-    for (int i = 0; i < tnodo; i++){
-      condiciones[i] = 0;
-    }
-    for (int i = 0; i < tnodo; i++){
-      distancias[i] = Double.MAX_VALUE;
-    }
-    padres[n-1] = n-1;
-    condiciones[n-1] = 1;
-    distancias[n-1] = 0;
-    for (int i = 0; i < nodo.length; i++){
-      for (int j = 0; j < nodo.length; j++){
-        if (condiciones[j] == 1){
-          for (int k = 0; k < nodo[j].cantidadConexiones(); k++){
-            int kk = nodo[j].getConexion(k)-1;
-            //System.out.println("Nodo " + (j+1) + " " + nodo[j].cantidadConexiones() + " " + nodo[kk].z);
-            if (condiciones[kk] == 0){
-              
-              if((nodo[kk]==nodo[38])||(nodo[kk]==nodo[25])||(nodo[kk]==nodo[22])||(nodo[kk]==nodo[23])||(nodo[kk]==nodo[63])||(nodo[kk]==nodo[137])||(nodo[kk]==nodo[136])||(nodo[kk]==nodo[81])||(nodo[kk]==nodo[39])||(nodo[kk]==nodo[59])){
-                
-                 double dist = distancia(nodo[j],nodo[kk])-20 + distancias[j];  
-                
-              }else{
-                double dist = distancia(nodo[j],nodo[kk]) + distancias[j];}
-              if (distancias[kk] > dist){
-                distancias[kk] = dist;
-                padres[kk] = j;
-              }
-            }
-          }
-        }
-      }
-      
-      double min = Double.MAX_VALUE;
-      int jmin = 0;
-      for (int j = 0; j < nodo.length; j++){
-        if (condiciones[j] == 0){
-          if (min > distancias[j]){
-            min = distancias[j];
-            jmin = j;
-          }
-        }
-      }
-      condiciones[jmin] = 1;
-      for (int j = 0; j < nodo.length; j++){
-        if (condiciones[j] == 0){
-          distancias[j] = Double.MAX_VALUE;
-        }
-      }
-    }
-  }
+
   double distancia (Nodo a, Nodo b) {
     return Math.sqrt(((a.posicion.x-b.posicion.x)*(a.posicion.x-b.posicion.x))+((a.posicion.y-b.posicion.y)*(a.posicion.y-b.posicion.y)));
   }
@@ -329,47 +245,17 @@ class Grafo {
     }
     camino[index] = new Linea(nodo[i].posicion, nodo[padres[i]].posicion);
   }
-void drawShorterPathE (int n, int start){
-    caminoE = new Linea[200];
-    int i = n-1;
-    int index = 0;
-    while (padres[i] != start-1){
-      caminoE[index] = new Linea(nodo[i].posicion,nodo[padres[i]].posicion);
-      //System.out.println(padres[i]+1);
-      i = padres[i];
-      index++;
-    }
-    caminoE[index] = new Linea(nodo[i].posicion,nodo[padres[i]].posicion);
-    for (int k = 0; k < caminoE.length; k++){
-      
-      if (caminoE[k] == null){
-        break;
-      }
-      
-    }
-    
-   
-  }
+
   void display() {    
     pushStyle();
     strokeWeight(8);
     stroke(255, 255, 0);
     strokeWeight(10);
     fill(0);
-    if (control==1) {
-      //if (linea2.length>0) {
-      //  for (int i = 0; i<linea2.length; i++) {
-      //    if (linea2[i]!=null) {
-      //      linea2[i].display();
-      //    }
-      //  }
-      //}
-    } else {
-      if (linea.length>0) {
-        for (int i = 0; i<linea.length; i++) {
-          if (linea[i]!=null) {
-            linea[i].display();
-          }
+    if (linea.length>0) {
+      for (int i = 0; i<linea.length; i++) {
+        if (linea[i]!=null) {
+          linea[i].display();
         }
       }
     }
@@ -403,8 +289,6 @@ void drawShorterPathE (int n, int start){
       PVector b = camino[i].puntofinal;
       line(a.x, a.y, b.x, b.y);
     }
-
-    
     //for (int i = 0; i < opcion.length; i++) {
     //  opcion[i].display();
     //  if (i<4) {
@@ -413,22 +297,5 @@ void drawShorterPathE (int n, int start){
     //    text(nombres[i], width*7/8, height*(i)/16 +5);
     //  }
     //}
-  }
-  
-  void displayCaminoE(){
-    pushStyle();
-    strokeWeight(2);
-    stroke(0, 0, 0);
-    strokeWeight(5);
-    fill(1);
-    
-    for (int i = 0; i < caminoE.length; i++){
-      if (caminoE[i] == null){
-        break;
-      }
-      PVector a = caminoE[i].puntoinicial;
-      PVector b = caminoE[i].puntofinal;
-      line(a.x,a.y,b.x,b.y);
-    }
   }
 }

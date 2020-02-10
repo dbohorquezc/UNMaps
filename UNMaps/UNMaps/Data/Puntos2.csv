@@ -21,7 +21,7 @@ posx,posy,nombre,numero
 -190,-22,Parqueadero Economía,NA
 -158,-7,Parqueadero CADE,NA
 -178,47,Parqueadero Ingeominas,NA
--58,169,Parqueadero IPARM,NA
+-58,141,Parqueadero IPARM,NA
 -195,-218,Salida Vehícular Capilla,NA
 -113,-257,Entrada Vehícular Capilla,NA
 183,53,Portería Carrera 45,NA
@@ -43,7 +43,7 @@ posx,posy,nombre,numero
 -94,69,Nodos de conexiones,NA
 -129,61,Nodos de conexiones,NA
 -171,21,Nodos de conexiones,NA
--194,-14,Nodos de conexiones,NA
+-194,14,Nodos de conexiones,NA
 -164,-29,Nodos de conexiones,NA
 -213,-121,Nodos de conexiones,NA
 -225,-122,Nodos de conexiones,NA
@@ -62,9 +62,4 @@ posx,posy,nombre,numero
 35,-105,Nodos de conexiones,NA
 42,-43,Nodos de conexiones,NA
 -141,6,Nodos de conexiones,NA
--203,-191,Nodos de conexiones,NA
--188,-199,Nodos de conexiones,NA
--215,-60,Nodos de conexiones,NA
-0,-217,Nodos de conexiones,NA
--79,46,Nodos de conexiones,NA
--84,72,Nodos de conexiones,NA
+-204,-88,Nodos de conexiones,NA

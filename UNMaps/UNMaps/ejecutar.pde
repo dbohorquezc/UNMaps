@@ -1,4 +1,4 @@
-  
+
 void ejecutar(int a) {
   color cl=color(135, 255, 119); 
   PVector pos= new PVector(width/2, height/2-50);  
@@ -14,13 +14,9 @@ void ejecutar(int a) {
   //PVector dimenr= new PVector(210, 40);
 
   color clg=color(255, 126, 126); 
-  PVector posg= new PVector(width/4, (height+img.height)/2+50);
-  PVector posge= new PVector(width*2/4, (height+img.height)/2+50);
-  PVector dimeng= new PVector(210, 40);
-  PVector dimenge= new PVector(400, 40);
-  PVector preturned1= new PVector(width*1/2-80, (height-img.height)/2-30);
-  PVector pauto= new PVector(width*1/2-20, (height-img.height)/2-30);
-  PVector pcamina= new PVector(width*1/2+20, (height-img.height)/2-30);   
+  PVector posg= new PVector(width/2, (height+img.height)/2+50);  
+  PVector dimeng= new PVector(210, 40);  
+  PVector preturned1= new PVector(width*1/2, (height-img.height)/2-30);   
   PVector pos1 = new PVector(width*1/8, height*2/16+100);
   PVector pos2 = new PVector(width*7/8, height*2/16+100); 
 
@@ -29,10 +25,8 @@ void ejecutar(int a) {
   Boton instruc=new BotonRect(cli, posi, 2, 15, 28, dimeni, "Instrucciones", 0);
 
   Boton generate=new BotonRect(clg, posg, 6, 15, 28, dimeng, "Generar ruta", 0);
-  Boton generateE=new BotonRect(clg, posge, 7, 15, 28, dimenge, "Generar ruta emblemática", 0);
-  Boton returned=new BotonCirc(color(41, 74, 255), preturned1, 0, 1);
-  Boton camina=new BotonCirc(color(41, 74, 255), pauto, 2, 2);
-  Boton auto=new BotonCirc(color(41, 74, 255), pcamina, 3, 3);
+
+  Boton returned=new BotonCirc(color(41, 74, 255), preturned1, 0, true);
   
   Boton partida =new BotonRect(color(41, 74, 255), pos1, 3, 15, 28, dimeng, "Asignar", 0);
   
@@ -62,18 +56,9 @@ void ejecutar(int a) {
     image(img, (width-img.width)/2, (height-img.height)/2);  
     generate.display();
     generate.asignarValor();
-    generateE.display();
-    generateE.asignarValor();
     mapa.display();    
-    if(botonb==true){
-      mapa.displayCaminoE();
-    }
     returned.display();
-    returned.asignarValor();
-    camina.display();
-    camina.asignarValor();
-    auto.display();
-    auto.asignarValor();  
+    returned.asignarValor();  
     llegada.display();
     llegada.asignarValor();
     partida.display();

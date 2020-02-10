@@ -80,21 +80,6 @@ class BotonRect extends Boton {
             mapa.nodo2=mapa.selecciones[1].getNumnodo();
             mapa.createPathStart(mapa.nodo1);
             mapa.drawShorterPath(mapa.nodo2, mapa.nodo1);
-
-       
-       
-          }
-        }
-      case 7:
-        for (int j=0; j<2; j++) {
-          if (mapa.selecciones[0].getNumnodo()!=0) mapa.nodo1=mapa.selecciones[0].getNumnodo();
-          if (mapa.selecciones[1].getNumnodo()!=0) {
-            mapa.nodo2=mapa.selecciones[1].getNumnodo();
-            mapa.createPathStartE(mapa.nodo1);
-            mapa.drawShorterPathE(mapa.nodo2, mapa.nodo1);
-            botonb = true;
-       
-       
           }
         }
         break;
