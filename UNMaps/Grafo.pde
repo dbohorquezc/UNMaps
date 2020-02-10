@@ -389,21 +389,8 @@ void drawShorterPathE (int n, int start){
       }
     }
 
-    pushStyle();
-    strokeWeight(2);
-    stroke(0, 0, 0);
-    strokeWeight(5);
-    fill(0);
-
-    for (int i = 0; i < camino.length; i++) {
-      if (camino[i] == null) {
-        break;
-      }
-      PVector a = camino[i].puntoinicial;
-      PVector b = camino[i].puntofinal;
-      line(a.x, a.y, b.x, b.y);
-    }
-
+   
+     
     
     //for (int i = 0; i < opcion.length; i++) {
     //  opcion[i].display();
@@ -420,7 +407,7 @@ void drawShorterPathE (int n, int start){
     strokeWeight(2);
     stroke(0, 0, 0);
     strokeWeight(5);
-    fill(1);
+    fill(0);
     
     for (int i = 0; i < caminoE.length; i++){
       if (caminoE[i] == null){
@@ -429,6 +416,22 @@ void drawShorterPathE (int n, int start){
       PVector a = caminoE[i].puntoinicial;
       PVector b = caminoE[i].puntofinal;
       line(a.x,a.y,b.x,b.y);
+    }
+  }
+  void displayCamino(){
+   pushStyle();
+    strokeWeight(2);
+    stroke(0, 0, 0);
+    strokeWeight(5);
+    fill(0);
+
+    for (int i = 0; i < camino.length; i++) {
+      if (camino[i] == null) {
+        break;
+      }
+      PVector a = camino[i].puntoinicial;
+      PVector b = camino[i].puntofinal;
+      line(a.x, a.y, b.x, b.y);
     }
   }
 }

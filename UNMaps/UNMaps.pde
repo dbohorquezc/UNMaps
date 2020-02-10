@@ -4,6 +4,7 @@ PImage img,img1;
 Table puntos,puntos2,conexiones,conexiones2;
 boolean ninicial,nfinal;
 boolean botonb;
+boolean boton;
 
 void setup() {
   fullScreen();

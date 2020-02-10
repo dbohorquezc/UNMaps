@@ -89,6 +89,9 @@ class BotonCirc extends Boton {
       switch(valor) {
       case 0:
         nivel=valor;
+        botonb=false;
+        boton=false;
+        
         break;
       case 1:
         nivel=valor;
