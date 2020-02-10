@@ -95,21 +95,21 @@ class Grafo {
         }
       }
     }    
-    //linea2= new Linea[tgrafo2];    
-    //int tlinea2=0;
-    //for (int i = 0; i < tablaconexionesveh.getRowCount(); i++) {
-    //  TableRow row=tablaconexionesveh.getRow(i);
-    //  for (int j = i; j < tablaconexionesveh.getColumnCount(); j++) {
-    //    if (row.getInt(j) == 1) {
-    //      linea[tlinea2]=new Linea(nodoveh[i].posicion, nodoveh[j].posicion);
-    //      nodoveh[i].connectNewNode(nodoveh[j].z);
-    //      nodoveh[j].connectNewNode(nodoveh[i].z);
-    //      tlinea2++;
-    //    }
-    //  }
-    //}
+    linea2= new Linea[tgrafo2];    
+    int tlinea2=0;
+    for (int i = 0; i < tablaconexionesveh.getRowCount(); i++) {
+      TableRow row=tablaconexionesveh.getRow(i);
+      for (int j = 0; j <i+1/*tablaconexionesveh.getColumnCount()*/; j++) {
+        if (row.getInt(j) == 1) {
+          linea2[tlinea2]=new Linea(nodoveh[i].posicion, nodoveh[j].posicion);
+          nodoveh[i].connectNewNode(nodoveh[j].z);
+          nodoveh[j].connectNewNode(nodoveh[i].z);
+          tlinea2++;
+        }
+      }
+    }
 
-    //
+    
 
 
 
@@ -137,9 +137,12 @@ class Grafo {
   }
   void setTamanografo2(Table aa) {
     for (int i = 0; i < aa.getRowCount(); i++) {
-      for (int j = i; j < aa.getColumnCount(); j++) {
+      for (int j = 0; j <1+i/* aa.getColumnCount()*/; j++) {
         if (aa.getInt(i, j) > 0) {
           tgrafo2=tgrafo2+aa.getInt(i, j);
+          if(aa.getInt(i, j) != aa.getInt(j, i)){
+            println(i,j);
+          }
         }
       }
     }
@@ -283,13 +286,13 @@ class Grafo {
     strokeWeight(10);
     fill(0);
     if (control==1) {
-      //if (linea2.length>0) {
-      //  for (int i = 0; i<linea2.length; i++) {
-      //    if (linea2[i]!=null) {
-      //      linea2[i].display();
-      //    }
-      //  }
-      //}
+      if (linea2.length>0) {
+        for (int i = 0; i<linea2.length; i++) {
+          if (linea2[i]!=null) {
+            linea2[i].display();
+          }
+        }
+      }
     } else {
       if (linea.length>0) {
         for (int i = 0; i<linea.length; i++) {
